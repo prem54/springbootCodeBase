@@ -1,0 +1,9 @@
+logging:  pattern:    console: "%d %-5level %logger : %msg%n"    file: "%d %-5level [%thread] %logger : %msg%n"  level:    ROOT: DEBUG    com.capstone.project: DEBUG  file: logs/Application.logs
+
+server:
+  port: 8075
+  
+spring:  profiles:    active: dev    include:    - capstone-swagger
+  
+  devtools:    restart:      enabled: true      application:  service-url: http://localhost:8075/capstone/api/
+  
