@@ -16,6 +16,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.capstone.project.CapstoneProjectApplication;
@@ -36,6 +37,7 @@ import org.springframework.test.context.ActiveProfiles;
 webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles(Constants.SPRING_PROFILE_DEVELOPMENT)
 @DisplayName("Integration Test")
+@AutoConfigureMockMvc
 class EmployeeControllerIntegrationTests {
 
 	private static final ObjectMapper om = new ObjectMapper();
@@ -48,6 +50,8 @@ class EmployeeControllerIntegrationTests {
 
 	@MockBean
 	private EmployeeRepository employeeRepository;
+	
+	//AuthenticationResponse token = authenticationService.generateJWTToken("admin", "admin");
 
 	@BeforeEach
 	public void initEach() {

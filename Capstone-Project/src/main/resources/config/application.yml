@@ -1,7 +1,12 @@
 spring:
   application:
     name: capstone
+#  resources:#    chain:#      enabled: true
 
 server:  servlet:    context-path: /${spring.application.name}
+    
+#management:
+#  security:
+#    enabld: true
     
     

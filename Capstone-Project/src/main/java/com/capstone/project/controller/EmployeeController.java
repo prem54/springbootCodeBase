@@ -1,9 +1,7 @@
 package com.capstone.project.controller;
 
 import java.net.URI;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -26,11 +24,7 @@ import com.capstone.project.exceptions.ResourceNotFoundException;
 import com.capstone.project.service.EmployeeService;
 import com.capstone.project.utils.HeaderUtil;
 
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 
 @RestController
 @CrossOrigin("*")
@@ -40,12 +34,12 @@ public class EmployeeController {
 	@Autowired
 	EmployeeService empService;
 
-	@GetMapping("/getEmployee")
+	@GetMapping("/v1/getEmployee")
 	public @ResponseBody List<Employee> getAllEmployee() {
 		return empService.getAllEmployee();
 	}
 
-	@GetMapping("/getEmployee/{empId}")
+	@GetMapping("/v1/getEmployee/{empId}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable Integer empId)
 			throws ResourceNotFoundException {
 		Employee employee = empService.findEmployeeById(empId)
@@ -53,7 +47,7 @@ public class EmployeeController {
 		return ResponseEntity.ok().body(employee);
 	}
 
-	@PostMapping("/addEmployee")
+	@PostMapping("/v1/addEmployee")
 	public ResponseEntity<Employee> addEmployee(@Valid @RequestBody Employee employee) {
 		empService.save(employee);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -68,7 +62,7 @@ public class EmployeeController {
 	//		empService.updateEmployee(employeeList);
 	//	}
 	
-	@PutMapping("/updateEmployee")
+	@PutMapping("/v1/updateEmployee")
 	public ResponseEntity<Employee> updateEmployee(@Valid @RequestBody Employee employee) throws ResourceNotFoundException {
         Integer id = employee.getEmpId();
         empService.findEmployeeById(id)
@@ -93,7 +87,7 @@ public class EmployeeController {
 
 
 	@ApiOperation(value = "Delete an employee")
-	@DeleteMapping("/deleteEmployee/{Id}")
+	@DeleteMapping("/v1/deleteEmployee/{Id}")
 	public ResponseEntity<Void> deleteEmployee(
 			@PathVariable Integer Id)
 			throws ResourceNotFoundException {
