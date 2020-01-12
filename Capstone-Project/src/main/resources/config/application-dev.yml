@@ -1,9 +1,9 @@
-logging:  pattern:    console: "%d %-5level %logger : %msg%n"    file: "%d %-5level [%thread] %logger : %msg%n"  level:    ROOT: DEBUG    com.capstone.project: DEBUG  file: logs/Application.logs  app:  jwtSecret: secret  jwtExpirationInMs: 604800000
+logging:  pattern:    console: "%d %-5level %logger : %msg%n"    file: "%d %-5level [%thread] %logger : %msg%n"  level:    ROOT: DEBUG    com.capstone.project: DEBUG  file: logs/Application.logs  app:  jwtSecret: MTIzNDU2Nzg=  tokenExpirationTime: 1 # Number of minutes  refreshTokenExpTime: 5 # Minutes: 604800000
 
 server:
   port: 8075
   
 spring:  profiles:    active: dev    include:    - capstone-swagger
 
-  devtools:    restart:      enabled: true  datasource:    type: com.zaxxer.hikari.HikariDataSource    url: jdbc:postgresql://localhost:5432/EmployeeDB    driver-class-name: org.postgresql.Driver    username: postgres    password: postgres  jpa:    database-platform: org.hibernate.dialect.PostgreSQLDialect    database: POSTGRESQL    show-sql: true    hibernate:      ddl-auto: create      application:  service-url: http://localhost:8075/capstone/api/
+  devtools:    restart:      enabled: true  datasource:    type: com.zaxxer.hikari.HikariDataSource    url: jdbc:postgresql://localhost:5432/EmployeeDB    driver-class-name: org.postgresql.Driver    username: postgres    password: postgres  jpa:    database-platform: org.hibernate.dialect.PostgreSQLDialect    database: POSTGRESQL    show-sql: true    hibernate:      ddl-auto: #create      application:  service-url: http://localhost:8075/capstone/api/
   

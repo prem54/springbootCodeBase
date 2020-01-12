@@ -3,11 +3,12 @@ package com.capstone.project.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,14 +21,16 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.capstone.project.bean.Employee;
+import com.capstone.project.config.Constants;
 import com.capstone.project.exceptions.ResourceNotFoundException;
+import com.capstone.project.payload.AuthenticationResponse;
 import com.capstone.project.service.EmployeeService;
 import com.capstone.project.utils.HeaderUtil;
 
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@CrossOrigin("*")
+//@CrossOrigin("*")
 @RequestMapping("/api")
 public class EmployeeController {
 
@@ -35,7 +38,9 @@ public class EmployeeController {
 	EmployeeService empService;
 
 	@GetMapping("/v1/getEmployee")
-	public @ResponseBody List<Employee> getAllEmployee() {
+	public @ResponseBody List<Employee> getAllEmployee(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		AuthenticationResponse rawToken = new AuthenticationResponse(request.getHeader("Authorization").substring("Bearer ".length(), request.getHeader("Authorization").length()));
+		rawToken.parseClaims(Constants.SECRET_KEY);
 		return empService.getAllEmployee();
 	}
 

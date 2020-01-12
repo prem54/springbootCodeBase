@@ -59,7 +59,7 @@ public class SwaggerAutoConfiguration {
 		
 		docket = docket.select()
 	            .paths(PathSelectors.regex(DEFAULT_INCLUDE_PATTERN))
-	            .apis(RequestHandlerSelectors.basePackage("com.capstone.project"))
+	            .apis(RequestHandlerSelectors.basePackage("com.capstone.project.controller"))
 	            .build();
 		
         watch.stop();

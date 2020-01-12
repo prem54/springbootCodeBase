@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.capstone.project.security.models.User;
-import com.capstone.project.security.repository.UserRepository;
+import com.capstone.project.bean.User;
+import com.capstone.project.repository.UserRepository;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {

@@ -17,15 +17,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.capstone.project.security.JwtAuthenticationEntryPoint;
-import com.capstone.project.security.filters.JwtRequestFilter;
+import com.capstone.project.security.JwtRequestFilter;
 
-//@Configuration
+@Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(
-//        securedEnabled = true,
-//        jsr250Enabled = true,
-//        prePostEnabled = true
-//)
+@EnableGlobalMethodSecurity(
+        securedEnabled = true,
+        jsr250Enabled = true,
+        prePostEnabled = true
+)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
@@ -69,7 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		                    "/**/*.js"
 		           ).permitAll()
 					.antMatchers("/private/**").permitAll()
-					.antMatchers("/api/v1/addEmployee", "/api/v1/deleteEmployee").hasRole("ADMIN")
+					.antMatchers("/api/v1/addEmployee", "/api/v1/deleteEmployee/**").hasRole("ADMIN")
 					.anyRequest()
 					.authenticated()
 				.and()

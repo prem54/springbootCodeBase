@@ -51,8 +51,6 @@ class EmployeeControllerIntegrationTests {
 	@MockBean
 	private EmployeeRepository employeeRepository;
 	
-	//AuthenticationResponse token = authenticationService.generateJWTToken("admin", "admin");
-
 	@BeforeEach
 	public void initEach() {
 		Employee employee = new Employee(1, "Test-1", "Test-1@it.com", "IT");
@@ -64,11 +62,9 @@ class EmployeeControllerIntegrationTests {
 	public void save_Employee_Ok() throws Exception {
 		Employee employee = new Employee(1, "Test-1", "Test-1@it.com", "IT");
 		when(employeeRepository.save(employee)).thenReturn(employee);
-		//String expected = om.writeValueAsString(employee);
 		ResponseEntity<String> responseEntity = this.restTemplate
 				.postForEntity(createURLWithPort("/addEmployee"), employee, String.class);
 		assertEquals(201, responseEntity.getStatusCodeValue());
-		//JSONAssert.assertEquals(expected, responseEntity.getBody(), false);
 		verify(employeeRepository, times(1)).save(any(Employee.class));
 
 	}
