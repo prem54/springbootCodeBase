@@ -18,12 +18,12 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "tbl_employeedetails")
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
+//@Getter
+//@Setter
+//@EqualsAndHashCode
+//@ToString
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class Employee {
 	
 	@Id
@@ -39,38 +39,38 @@ public class Employee {
 	@Column(length=20)
 	private String departmentName;
 
-	// public Employee(Integer empId, String empName, String emailId, String departmentName) {
-	// 	super();
-	// 	this.empId = empId;
-	// 	this.empName = empName;
-	// 	this.emailId = emailId;
-	// 	this.departmentName = departmentName;
-	// }
+	public Employee(Integer empId, String empName, String emailId, String departmentName) {
+		super();
+		this.empId = empId;
+		this.empName = empName;
+		this.emailId = emailId;
+		this.departmentName = departmentName;
+	}
 	
-	// public Employee() {}
+	public Employee() {}
 
-	// public Integer getEmpId() {
-	// 	return empId;
-	// }
-	// public void setEmpId(Integer empId) {
-	// 	this.empId = empId;
-	// }
-	// public String getEmpName() {
-	// 	return empName;
-	// }
-	// public void setEmpName(String empName) {
-	// 	this.empName = empName;
-	// }
-	// public String getEmailId() {
-	// 	return emailId;
-	// }
-	// public void setEmailId(String emailId) {
-	// 	this.emailId = emailId;
-	// }
-	// public String getDepartmentName() {
-	// 	return departmentName;
-	// }
-	// public void setDepartmentName(String departmentName) {
-	// 	this.departmentName = departmentName;
-	// }
+	public Integer getEmpId() {
+		return empId;
+	}
+	public void setEmpId(Integer empId) {
+		this.empId = empId;
+	}
+	public String getEmpName() {
+		return empName;
+	}
+	public void setEmpName(String empName) {
+		this.empName = empName;
+	}
+	public String getEmailId() {
+		return emailId;
+	}
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+	public String getDepartmentName() {
+		return departmentName;
+	}
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
+	}
 }
